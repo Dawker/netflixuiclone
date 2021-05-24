@@ -1,0 +1,57 @@
+* {
+
+    margin: 0;
+}
+
+.app{
+    background-color: #111;
+}
+
+
+
+.app__footer{
+    display: flex;
+    background-color:#111;
+    justify-content: center;
+
+    padding-bottom: 15px;
+
+
+}
+
+
+.app__footer > small{
+
+    color: white;
+}
+.MuiSvgIcon-root{
+
+    font-size: small !important
+    ;
+
+
+}
+.app__ass{
+    margin-right: 3px !important;
+}
+
+
+
+
+
+.app__icon{
+    margin: 3px;
+
+    color: white;
+}
+
+.app__footer > a{
+    color: white;
+    font-size: small;
+    font-size: 13.5px;
+    text-decoration: none;
+}
+
+.app__footer > a:hover{
+    text-decoration: underline white;
+}
