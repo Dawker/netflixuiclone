@@ -1,15 +1,20 @@
 import React from "react";
 import "./App.css";
-import Row from "./Row";
-import requests from "./requests";
+
+import Row from "./components/Row";
+import requests from "./api/requests";
 // import originals from "./originals";
-import Banner from "./Banner";
-import Navbar from "./Navbar";
+import Banner from "./components/Banner";
+import Navbar from "./components/Navbar";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+
+// const Row = React.lazy(() => import("./components/Row"));
+
 
 function App({ handleClick }) {
   return (
     <div className="app">
+
       <Navbar />
       <Banner handleClick={handleClick} />
       <Row
