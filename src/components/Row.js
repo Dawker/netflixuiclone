@@ -25,7 +25,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
         timer = setTimeout(() => {
           setLoading(false)
 
-        }, 2000);
+        }, 3000);
       }
       fetchData();
 
@@ -58,27 +58,28 @@ function Row({ title, fetchUrl, isLargeRow }) {
     }
   };
 
+  console.log("rerender ")
+
   return (
     <div className="row">
       <h2>{title}</h2>
       <div className="row__posters">
         {movies.map((movie) => (
-          <>
-            {loading === true ? (
-              <div className={isLargeRow ? "containerLarge" : "container"} key={movie.id}>
-                <div key={movie.id} className={isLargeRow ? "overlayLarge pulse" : "overlay pulse"}></div>
-              </div>
-            ) : (
-              <img
-                key={movie.id}
-                onClick={() => handleClick(movie)}
-                className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-                src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path
-                  }`}
-                alt={movie.name}
-              />
-            )}
-          </>
+          loading === true ? (
+            <div className={isLargeRow ? "containerLarge" : "container"} key={movie.id}
+            >
+              <div className={isLargeRow ? "overlayLarge pulse" : "overlay pulse"}></div>
+            </div>
+          ) : (
+            <img
+              key={movie.id}
+              onClick={() => handleClick(movie)}
+              className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+              src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path
+                }`}
+              alt={movie.name}
+            />
+          )
         ))}
       </div>
       {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />}

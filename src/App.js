@@ -14,17 +14,18 @@ function App({ handleClick }) {
       <Navbar />
       <Banner handleClick={handleClick} />
       <Row
+        key={1}
         title="Netflix Originals"
         fetchUrl={requests.fetchNetflixOriginals}
         isLargeRow={true}
       />
-      <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
-      <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
-      <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
-      <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
-      <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
-      <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
-      <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
+      <Row key={2} title="Trending Now" fetchUrl={requests.fetchTrending} />
+      <Row key={3} title="Top Rated" fetchUrl={requests.fetchTopRated} />
+      <Row key={4} title="Action Movies" fetchUrl={requests.fetchActionMovies} />
+      <Row key={5} title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+      <Row key={6} title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
+      <Row key={7} title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
+      <Row key={8} title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
       <footer className="app__footer">
         <small style={{ color: "white" }}>Made with</small>
         <FavoriteIcon className="app__icon" />
