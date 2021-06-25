@@ -58,8 +58,6 @@ function Row({ title, fetchUrl, isLargeRow }) {
     }
   };
 
-  console.log("rerender ")
-
   return (
     <div className="row">
       <h2>{title}</h2>
