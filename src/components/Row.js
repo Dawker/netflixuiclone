@@ -9,16 +9,36 @@ const base_url = "https://image.tmdb.org/t/p/original";
 
 function Row({ title, fetchUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [trailerUrl, setTrailerUrl] = useState("");
 
+
   useEffect(() => {
-    async function fetchData() {
-      const request = await axios.get(fetchUrl);
-      setMovies(request.data.results);
-      return request;
+    let mounted = true;
+    var timer;
+    setLoading(true)
+
+    if (mounted === true) {
+      async function fetchData() {
+        const request = await axios.get(fetchUrl);
+        setMovies(request.data.results);
+        timer = setTimeout(() => {
+          setLoading(false)
+
+        }, 2000);
+      }
+      fetchData();
+
     }
-    fetchData();
+
+    return () => {
+      clearTimeout(timer);
+      mounted = false;
+    }
+
   }, [fetchUrl]);
+
+
 
   let opts = {
     height: "390",
@@ -36,28 +56,33 @@ function Row({ title, fetchUrl, isLargeRow }) {
         })
         .catch((error) => console.log(error));
     }
-    console.log(movie.title);
   };
 
   return (
-    <>
-      <div className="row">
-        <h2>{title}</h2>
-        <div className="row__posters">
-          {movies.map((movie) => (
-            <img
-              key={movie.id}
-              onClick={() => handleClick(movie)}
-              className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-              src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path
-                }`}
-              alt={movie.name}
-            />
-          ))}
-        </div>
-        {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />}
+    <div className="row">
+      <h2>{title}</h2>
+      <div className="row__posters">
+        {movies.map((movie) => (
+          <>
+            {loading === true ? (
+              <div className={isLargeRow ? "containerLarge" : "container"} key={movie.id}>
+                <div key={movie.id} className={isLargeRow ? "overlayLarge pulse" : "overlay pulse"}></div>
+              </div>
+            ) : (
+              <img
+                key={movie.id}
+                onClick={() => handleClick(movie)}
+                className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+                src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path
+                  }`}
+                alt={movie.name}
+              />
+            )}
+          </>
+        ))}
       </div>
-    </>
+      {trailerUrl && <Youtube videoId={trailerUrl} opts={opts} />}
+    </div>
   );
 }
 

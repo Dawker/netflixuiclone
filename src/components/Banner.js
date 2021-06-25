@@ -24,8 +24,6 @@ function Banner({ handleClick }) {
         return str?.length > n ? str.substr(0, n - 1) + "..." : str;
     }
 
-
-
     return (
         <header className="banner"
             style={{
@@ -56,12 +54,7 @@ function Banner({ handleClick }) {
                     {truncate(movie?.overview, 150)}
                 </h1>
                 <div className="banner--fadeBottom" />
-
-
-
-
             </div>
-
         </header >
     )
 }

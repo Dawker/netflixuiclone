@@ -8,13 +8,9 @@ import Banner from "./components/Banner";
 import Navbar from "./components/Navbar";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 
-// const Row = React.lazy(() => import("./components/Row"));
-
-
 function App({ handleClick }) {
   return (
     <div className="app">
-
       <Navbar />
       <Banner handleClick={handleClick} />
       <Row
@@ -35,7 +31,6 @@ function App({ handleClick }) {
         <small className="app__ass" style={{ color: "white" }}>
           by
         </small>
-
         <a
           href="https://www.linkedin.com/in/manea-ionut-0414b11b6/"
           target="__blank"
