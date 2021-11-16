@@ -1,10 +1,8 @@
 import React from "react";
-import "./App.css";
 
+import "./App.css";
 import requests from "./api/requests";
-// import originals from "./originals";
-import { Navbar, Banner, Row } from "./components";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import { Navbar, Banner, Row, Footer } from "./components";
 
 function App({ handleClick }) {
   return (
@@ -23,19 +21,7 @@ function App({ handleClick }) {
       <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
       <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
       <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
-      <footer className="app__footer">
-        <small style={{ color: "white" }}>Made with</small>
-        <FavoriteIcon className="app__icon" />
-        <small className="app__ass" style={{ color: "white" }}>
-          by
-        </small>
-        <a
-          href="https://www.linkedin.com/in/manea-ionut-0414b11b6/"
-          target="__blank"
-        >
-          Manea Ionut
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 }
