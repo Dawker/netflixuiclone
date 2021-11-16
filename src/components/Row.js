@@ -36,7 +36,8 @@ function Row({ title, fetchUrl, isLargeRow }) {
       mounted = false;
     }
 
-  }, [fetchUrl]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
 
